@@ -1,6 +1,7 @@
 import P5 from "p5";
 
-window.isMatrix = false
+window.isMatrix = false;
+window.matrixColor = [0, 255, 65];
 
 const sketch = (p5: P5) => {
     const scale = 10;
@@ -29,7 +30,7 @@ const sketch = (p5: P5) => {
                 const w = p5.map(bright, 0, 255, 0, 255);
                 p5.noStroke();
                 if (window.isMatrix) {
-                    p5.fill(0, 255, 65, w)
+                    p5.fill(window.matrixColor[0], window.matrixColor[1], window.matrixColor[2], w)
                 } else {
                     p5.fill(r, g, b);
                 }
