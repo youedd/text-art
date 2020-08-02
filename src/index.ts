@@ -1,6 +1,6 @@
 import P5 from "p5";
 
-
+window.isMatrix = false
 
 const sketch = (p5: P5) => {
     const scale = 10;
@@ -28,10 +28,11 @@ const sketch = (p5: P5) => {
                 const bright = (r + g + b) / 3;
                 const w = p5.map(bright, 0, 255, 0, 255);
                 p5.noStroke();
-                // Normal Mode
-                p5.fill(r, g, b);
-                // Matrix mode
-                // p5.fill(0, 255, 65, w)
+                if (window.isMatrix) {
+                    p5.fill(0, 255, 65, w)
+                } else {
+                    p5.fill(r, g, b);
+                }
                 p5.textSize(scale);
                 p5.text(p5.random() < 0.5 ? '0' : '1', x * scale, y * scale)
             }
