@@ -12,7 +12,7 @@ const sketch = (p5: P5) => {
         p5.createCanvas(cols * scale, rows * scale)
         capture = p5.createCapture(p5.VIDEO);
         capture.size(cols, rows);
-        capture.hide()
+        capture.hide();
     };
 
     p5.draw = () => {
@@ -27,10 +27,9 @@ const sketch = (p5: P5) => {
                 const g = capture.pixels[index + 1];
                 const b = capture.pixels[index + 2];
                 const bright = (r + g + b) / 3;
-                const w = p5.map(bright, 0, 255, 0, 255);
                 p5.noStroke();
                 if (window.isMatrix) {
-                    p5.fill(window.matrixColor[0], window.matrixColor[1], window.matrixColor[2], w)
+                    p5.fill(window.matrixColor[0], window.matrixColor[1], window.matrixColor[2], bright)
                 } else {
                     p5.fill(r, g, b);
                 }
