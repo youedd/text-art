@@ -19,18 +19,21 @@ const sketch = (p5: P5) => {
         // TODO : check p5 typing
         capture.loadPixels()
 
-        for (var y = 0; y < capture.height; y++) {
-            for (var x = 0; x < capture.width; x++) {
-                var index = (capture.width - x + 1 + (y * capture.width)) * 4;
-                var r = capture.pixels[index + 0];
-                var g = capture.pixels[index + 1];
-                var b = capture.pixels[index + 2];
-                var bright = (r + g + b) / 3;
-                var w = p5.map(bright, 0, 255, 0, scale);
+        for (let y = 0; y < capture.height; y++) {
+            for (let x = 0; x < capture.width; x++) {
+                const index = (capture.width - x + 1 + (y * capture.width)) * 4;
+                const r = capture.pixels[index + 0];
+                const g = capture.pixels[index + 1];
+                const b = capture.pixels[index + 2];
+                const bright = (r + g + b) / 3;
+                const w = p5.map(bright, 0, 255, 0, 255);
                 p5.noStroke();
+                // Normal Mode
                 p5.fill(r, g, b);
+                // Matrix mode
+                // p5.fill(0, 255, 65, w)
                 p5.textSize(scale);
-                p5.text(p5.random() < 0.5 ? 0 : 1, x * scale, y * scale)
+                p5.text(p5.random() < 0.5 ? '0' : '1', x * scale, y * scale)
             }
         }
     }
